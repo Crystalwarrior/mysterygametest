@@ -1,0 +1,41 @@
+[gd_scene load_steps=4 format=3 uid="uid://b663ow1jb8w87"]
+
+[ext_resource type="Texture2D" uid="uid://clkudh2748etc" path="res://icon.svg" id="1_pmyks"]
+[ext_resource type="Texture2D" uid="uid://c506n2judy5sc" path="res://fovlight.png" id="2_2gt6f"]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_2m0k8"]
+polygon = PackedVector2Array(-224.387, -113.819, -226.013, 141.461, 105.689, 281.296, 378.856, 195.119, 403.246, -121.949, 152.843, -269.914)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="bg" type="Sprite2D" parent="."]
+position = Vector2(2.00001, -2)
+scale = Vector2(9.65625, 6.36719)
+texture = ExtResource("1_pmyks")
+
+[node name="dude" type="Sprite2D" parent="."]
+position = Vector2(162, -194)
+texture = ExtResource("1_pmyks")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0, 0, 0, 1)
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+position = Vector2(188, 10)
+scale = Vector2(0.61501, 0.61501)
+occluder = SubResource("OccluderPolygon2D_2m0k8")
+occluder_light_mask = 3
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="dude the sequel" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(254, -171)
+texture = ExtResource("1_pmyks")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+metadata/_edit_group_ = true
+
+[node name="PointLight2D" type="PointLight2D" parent="Camera2D"]
+scale = Vector2(0.61501, 0.61501)
+shadow_enabled = true
+texture = ExtResource("2_2gt6f")
