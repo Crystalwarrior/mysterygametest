@@ -98,9 +98,16 @@ _data = {
 }
 
 [node name="Player" type="CharacterBody2D"]
-y_sort_enabled = true
 motion_mode = 1
 script = ExtResource("1_udxex")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(0, -3)
+texture = ExtResource("1_mck8c")
+
+[node name="Knife" type="Sprite2D" parent="."]
+position = Vector2(11, -1)
+texture = ExtResource("3_fjmmt")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_p4o1o")
@@ -129,14 +136,6 @@ monitorable = false
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="DirectionPivot/SwingArea2D"]
 rotation = -1.57079
 polygon = PackedVector2Array(0, 0, -19, -22, -27, -14, -31, 0, -27, 14, -19, 22)
-
-[node name="Sprite" type="Sprite2D" parent="."]
-position = Vector2(0, -3)
-texture = ExtResource("1_mck8c")
-
-[node name="Knife" type="Sprite2D" parent="."]
-position = Vector2(11, -1)
-texture = ExtResource("3_fjmmt")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
