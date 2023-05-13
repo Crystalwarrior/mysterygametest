@@ -596,7 +596,7 @@ sources/0 = SubResource("TileSetAtlasSource_5y1ua")
 
 [node name="Node2D" type="Node2D"]
 
-[node name="TileMap" type="TileMap" parent="."]
+[node name="GameMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_21n41")
 format = 2
 layer_0/name = "Ground"
@@ -605,11 +605,23 @@ layer_0/tile_data = PackedInt32Array(327686, 65536, 0, 393222, 0, 1, 458758, 0, 
 [node name="VisionMap" type="TileMap" parent="." node_paths=PackedStringArray("target_tilemap", "target_node")]
 z_index = 1
 tile_set = SubResource("TileSet_ju4fi")
-cell_quadrant_size = 32
 format = 2
 script = ExtResource("4_u1pxp")
-target_tilemap = NodePath("../TileMap")
+target_tilemap = NodePath("../GameMap")
 target_node = NodePath("../Player/Camera2D")
+
+[node name="Door" parent="." instance=ExtResource("6_ymui2")]
+position = Vector2(400, 368)
+direction = 3
+
+[node name="Door2" parent="." instance=ExtResource("6_ymui2")]
+position = Vector2(400, 208)
+open = true
+direction = 3
+
+[node name="Door3" parent="." instance=ExtResource("6_ymui2")]
+position = Vector2(432, 432)
+direction = 2
 
 [node name="Player" parent="." instance=ExtResource("4_2ybwa")]
 position = Vector2(368, 240)
@@ -620,6 +632,3 @@ zoom = Vector2(2, 2)
 
 [node name="Player2" parent="." instance=ExtResource("4_2ybwa")]
 position = Vector2(512, 325)
-
-[node name="Door" parent="." instance=ExtResource("6_ymui2")]
-position = Vector2(432, 432)

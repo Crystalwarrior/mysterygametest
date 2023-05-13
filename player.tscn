@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://dx8dwpoo12hqs"]
+[gd_scene load_steps=11 format=3 uid="uid://dx8dwpoo12hqs"]
 
 [ext_resource type="Texture2D" uid="uid://bynbj2orepl1i" path="res://actual_person.png" id="1_mck8c"]
 [ext_resource type="Script" path="res://player.gd" id="1_udxex"]
 [ext_resource type="Texture2D" uid="uid://60c3ue7dt8ym" path="res://knife.png" id="3_fjmmt"]
 [ext_resource type="Script" path="res://HealthComponent.gd" id="4_0giqf"]
+[ext_resource type="Script" path="res://InteractionArea.gd" id="4_abueb"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_p4o1o"]
 radius = 5.0
@@ -113,7 +114,7 @@ texture = ExtResource("3_fjmmt")
 shape = SubResource("CapsuleShape2D_p4o1o")
 
 [node name="HitBox" type="Area2D" parent="."]
-monitoring = false
+script = ExtResource("4_abueb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
 shape = SubResource("CapsuleShape2D_beeef")
@@ -145,5 +146,7 @@ libraries = {
 [node name="HealthComponent" type="Node" parent="."]
 script = ExtResource("4_0giqf")
 
+[connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]
+[connection signal="area_exited" from="HitBox" to="." method="_on_hit_box_area_exited"]
 [connection signal="area_entered" from="DirectionPivot/SwingArea2D" to="." method="_on_swing_area_entered"]
 [connection signal="depleted" from="HealthComponent" to="." method="_on_health_component_depleted"]
