@@ -1,0 +1,13 @@
+sndDoorOpen.wav and sndDoorClose.wav created from
+https://freesound.org/people/rivernile7/sounds/234244/
+
+sndSwing1.wav and sndSwing2.wav created from
+https://freesound.org/people/Joao_Janz/sounds/485269/
+
+sndCut1.wav and sndCut2.wav created from
+https://freesound.org/people/nicktermer/sounds/259542/
+mixed with
+https://freesound.org/people/Joao_Janz/sounds/485269/
+
+Thud.wav created from
+https://freesound.org/people/leonelmail/sounds/504626/

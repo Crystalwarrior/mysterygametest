@@ -3,7 +3,7 @@ extends TileMap
 # The tilemap to target for fov data
 @export var target_tilemap: TileMap
 # Player node to target
-@export var target_player: Node2D
+@export var target_node: Node2D
 
 @export var vision_range: int = 9
 
@@ -24,7 +24,7 @@ func _ready():
 
 func _process(delta):
 	var old_player_pos = player_pos
-	player_pos = local_to_map(to_local(target_player.global_position))
+	player_pos = local_to_map(to_local(target_node.global_position))
 	# Our position changed, update the field of view!
 	if player_pos != old_player_pos:
 		_compute_field_of_view()
@@ -64,6 +64,6 @@ func _compute_field_of_view() -> void:
 			# Mark the cell as visible if the shadowcasting has found it
 			# to be in view.
 			if _mrpas.is_in_view(map_position):
-				set_cell(0, map_position)
+				erase_cell(0, map_position)
 			else:
 				set_cell(0, map_position, 0, Vector2i(0, 0))

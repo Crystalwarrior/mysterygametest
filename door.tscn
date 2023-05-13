@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://dga3mndcb5056"]
+
+[ext_resource type="Texture2D" uid="uid://k205a8l1x1sx" path="res://wooden_door.png" id="1_7q1hg"]
+
+[node name="Door" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_7q1hg")
+region_enabled = true
+region_rect = Rect2(0, 0, 32, 32)
