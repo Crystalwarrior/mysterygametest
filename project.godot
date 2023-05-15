@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Mysterygametest"
-run/main_scene="res://tilemaptest.tscn"
+run/main_scene="res://tilemaptest_16x16.tscn"
 config/features=PackedStringArray("4.0", "GL Compatibility")
 config/icon="res://icon.svg"
 

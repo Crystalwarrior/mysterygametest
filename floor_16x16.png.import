@@ -2,27 +2,26 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cp3sej5yc34kj"
-path.s3tc="res://.godot/imported/black_16x16.png-d4e4d0a783e784cd3647dc43f02f793b.s3tc.ctex"
+uid="uid://cx6rgsexw2fdm"
+path="res://.godot/imported/floor_16x16.png-6320b8ee30f3a930cb524089e7f3a245.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
-source_file="res://black_16x16.png"
-dest_files=["res://.godot/imported/black_16x16.png-d4e4d0a783e784cd3647dc43f02f793b.s3tc.ctex"]
+source_file="res://floor_16x16.png"
+dest_files=["res://.godot/imported/floor_16x16.png-6320b8ee30f3a930cb524089e7f3a245.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=true
+mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
@@ -32,4 +31,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=0
+detect_3d/compress_to=1

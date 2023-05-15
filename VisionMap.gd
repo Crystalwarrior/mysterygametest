@@ -5,7 +5,9 @@ extends TileMap
 # Player node to target
 @export var target_node: Node2D
 
-@export var vision_range: int = 9
+@export var vision_range: int = 11
+
+var dissolvetile = preload("res://dissolvetile.tscn");
 
 var map_size: Vector2i
 
@@ -60,10 +62,16 @@ func _compute_field_of_view() -> void:
 	for y in range(map_size.y):
 		for x in range(map_size.x):
 			var map_position = Vector2i(x, y)
+			
+			var dist = (player_pos - map_position).length()
 
 			# Mark the cell as visible if the shadowcasting has found it
 			# to be in view.
-			if _mrpas.is_in_view(map_position):
+			if _mrpas.is_in_view(map_position) and dist < vision_range:
+				if get_cell_atlas_coords(0, map_position) == Vector2i(0, 0):
+					var scene = dissolvetile.instantiate()
+					add_child(scene)
+					scene.position = map_to_local(map_position)
 				erase_cell(0, map_position)
 			else:
 				set_cell(0, map_position, 0, Vector2i(0, 0))

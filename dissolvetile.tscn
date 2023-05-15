@@ -1,0 +1,62 @@
+[gd_scene load_steps=5 format=3 uid="uid://4m70ogfk7hke"]
+
+[ext_resource type="Texture2D" uid="uid://cp3sej5yc34kj" path="res://black_16x16.png" id="1_6mbll"]
+
+[sub_resource type="Animation" id="Animation_tydsr"]
+resource_name = "dissolve"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.25, 0.25),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_o2ftl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_y2nse"]
+_data = {
+"RESET": SubResource("Animation_o2ftl"),
+"dissolve": SubResource("Animation_tydsr")
+}
+
+[node name="Black" type="Sprite2D"]
+texture = ExtResource("1_6mbll")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "dissolve"
+libraries = {
+"": SubResource("AnimationLibrary_y2nse")
+}
