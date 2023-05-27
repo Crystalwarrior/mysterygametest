@@ -11,11 +11,18 @@ var attack = false
 var interact = false
 
 func get_input():
-	var input_direction = Input.get_vector("left", "right", "up", "down")
+	set_movement(Input.get_vector("left", "right", "up", "down"))
+	set_attacking(Input.is_action_just_pressed("attack"))
+	set_interacting(Input.is_action_just_pressed("interact"))
+
+func set_movement(input_direction):
 	velocity = input_direction * speed
-	
-	attack = Input.is_action_just_pressed("attack")
-	interact = Input.is_action_just_pressed("interact")
+
+func set_attacking(tog):
+	attack = tog
+
+func set_interacting(tog):
+	interact = tog
 
 func _physics_process(delta):
 	if controllable:
