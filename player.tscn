@@ -15,7 +15,7 @@ radius = 9.0
 
 [sub_resource type="Animation" id="Animation_t6rs8"]
 resource_name = "KnifeSwing"
-length = 0.3
+length = 0.4
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -23,8 +23,8 @@ tracks/0/path = NodePath("DirectionPivot/KnifeSwing:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(0.5, 0.5),
 "update": 0,
 "values": [1.57079, 3.14159]
 }
@@ -35,7 +35,7 @@ tracks/1/path = NodePath("DirectionPivot/SwingArea2D:monitoring")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.3),
+"times": PackedFloat32Array(0, 0.4),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -47,7 +47,7 @@ tracks/2/path = NodePath("DirectionPivot/KnifeSwing:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.3),
+"times": PackedFloat32Array(0, 0.3, 0.4),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [true, true, false]
