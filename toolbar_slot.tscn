@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://dsbbynanojwjv"]
+
+[ext_resource type="StyleBox" uid="uid://bwuggq2cfx3tx" path="res://toolbar_slot.tres" id="1_mx6cu"]
+[ext_resource type="Script" path="res://toolbar_slot.gd" id="1_s8l1y"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_6jr46"]
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 6
+shadow_color = Color(0, 0, 0, 0.196078)
+shadow_offset = Vector2(2, 2)
+
+[node name="ToolbarSlot" type="PanelContainer"]
+theme_override_styles/panel = ExtResource("1_mx6cu")
+script = ExtResource("1_s8l1y")
+
+[node name="Image" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+expand_mode = 4
+
+[node name="IndexLabel" type="Label" parent="."]
+layout_mode = 2
+size_flags_vertical = 1
+text = "<key>"
+label_settings = SubResource("LabelSettings_6jr46")
+clip_text = true
