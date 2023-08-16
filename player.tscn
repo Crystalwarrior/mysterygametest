@@ -1,10 +1,15 @@
-[gd_scene load_steps=11 format=3 uid="uid://dx8dwpoo12hqs"]
+[gd_scene load_steps=16 format=3 uid="uid://dx8dwpoo12hqs"]
 
 [ext_resource type="Texture2D" uid="uid://bynbj2orepl1i" path="res://actual_person.png" id="1_mck8c"]
 [ext_resource type="Script" path="res://player.gd" id="1_udxex"]
+[ext_resource type="Script" path="res://SpriteGroup.gd" id="2_umj8r"]
+[ext_resource type="Texture2D" uid="uid://bgps3dr4jrsmt" path="res://assets/sprites/character/body/idle.png" id="3_0wo7q"]
 [ext_resource type="Texture2D" uid="uid://60c3ue7dt8ym" path="res://knife.png" id="3_fjmmt"]
 [ext_resource type="Script" path="res://HealthComponent.gd" id="4_0giqf"]
 [ext_resource type="Script" path="res://InteractionArea.gd" id="4_abueb"]
+[ext_resource type="Texture2D" uid="uid://lmwvfhl2ohjc" path="res://assets/sprites/character/head/idle.png" id="4_gd6b6"]
+[ext_resource type="Texture2D" uid="uid://ci1d3mfr2m0v7" path="res://assets/sprites/character/hair/john.png" id="5_eb4gg"]
+[ext_resource type="Script" path="res://ContainerComponent.gd" id="6_68yi5"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_p4o1o"]
 radius = 5.0
@@ -19,7 +24,7 @@ length = 0.4
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("DirectionPivot/KnifeSwing:rotation")
+tracks/0/path = NodePath("DirectionPivot/SwingArea2D/KnifeSwing:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -43,7 +48,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("DirectionPivot/KnifeSwing:visible")
+tracks/2/path = NodePath("DirectionPivot/SwingArea2D/KnifeSwing:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -58,7 +63,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("DirectionPivot/KnifeSwing:rotation")
+tracks/0/path = NodePath("DirectionPivot/SwingArea2D/KnifeSwing:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -82,7 +87,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("DirectionPivot/KnifeSwing:visible")
+tracks/2/path = NodePath("DirectionPivot/SwingArea2D/KnifeSwing:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -102,11 +107,34 @@ _data = {
 motion_mode = 1
 script = ExtResource("1_udxex")
 
+[node name="SpriteGroup" type="CanvasGroup" parent="."]
+position = Vector2(0, -3)
+script = ExtResource("2_umj8r")
+
+[node name="body" type="Sprite2D" parent="SpriteGroup"]
+texture = ExtResource("3_0wo7q")
+hframes = 4
+vframes = 2
+
+[node name="head" type="Sprite2D" parent="SpriteGroup"]
+position = Vector2(0, -3)
+texture = ExtResource("4_gd6b6")
+hframes = 4
+vframes = 2
+
+[node name="hair" type="Sprite2D" parent="SpriteGroup"]
+position = Vector2(0, -3)
+texture = ExtResource("5_eb4gg")
+hframes = 4
+vframes = 2
+
 [node name="Sprite" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(0, -3)
 texture = ExtResource("1_mck8c")
 
 [node name="Knife" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(11, -1)
 texture = ExtResource("3_fjmmt")
 
@@ -122,21 +150,22 @@ debug_color = Color(0, 0.6, 0.0235294, 0.419608)
 
 [node name="DirectionPivot" type="Node2D" parent="."]
 
-[node name="KnifeSwing" type="Sprite2D" parent="DirectionPivot"]
-visible = false
-modulate = Color(100, 100, 100, 1)
-z_index = 1
-rotation = 1.57079
-texture = ExtResource("3_fjmmt")
-offset = Vector2(20, -20)
-
 [node name="SwingArea2D" type="Area2D" parent="DirectionPivot"]
+rotation = -1.5708
 monitoring = false
 monitorable = false
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="DirectionPivot/SwingArea2D"]
 rotation = -1.57079
 polygon = PackedVector2Array(0, 0, -19, -22, -27, -14, -31, 0, -27, 14, -19, 22)
+
+[node name="KnifeSwing" type="Sprite2D" parent="DirectionPivot/SwingArea2D"]
+visible = false
+modulate = Color(100, 100, 100, 1)
+z_index = 1
+rotation = 1.57079
+texture = ExtResource("3_fjmmt")
+offset = Vector2(20, -20)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -145,6 +174,9 @@ libraries = {
 
 [node name="HealthComponent" type="Node" parent="."]
 script = ExtResource("4_0giqf")
+
+[node name="ContainerComponent" type="Node" parent="."]
+script = ExtResource("6_68yi5")
 
 [connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]
 [connection signal="area_exited" from="HitBox" to="." method="_on_hit_box_area_exited"]

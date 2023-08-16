@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bf4yx13xfdr0d"
-path="res://.godot/imported/knifeicon.png-a2e40efde28c890bba53ab76897adf16.ctex"
+uid="uid://b5jdga3js4ipw"
+path="res://.godot/imported/crouch.png-f6e7d4a59491f7a3b94d4906ca656c20.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://knifeicon.png"
-dest_files=["res://.godot/imported/knifeicon.png-a2e40efde28c890bba53ab76897adf16.ctex"]
+source_file="res://assets/sprites/character/body/crouch.png"
+dest_files=["res://.godot/imported/crouch.png-f6e7d4a59491f7a3b94d4906ca656c20.ctex"]
 
 [params]
 

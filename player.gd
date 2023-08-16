@@ -14,6 +14,10 @@ func get_input():
 	set_movement(Input.get_vector("left", "right", "up", "down"))
 	set_attacking(Input.is_action_just_pressed("attack"))
 	set_interacting(Input.is_action_just_pressed("interact"))
+	
+	$DirectionPivot.rotation = snapped(global_position.direction_to(get_global_mouse_position()).angle(), PI/4)
+	var dir = int((snapped($DirectionPivot.rotation / PI, 0.01) + 1) * 4) + 2
+	$SpriteGroup.set_dir(8 - dir)
 
 func set_movement(input_direction):
 	velocity = input_direction * speed
