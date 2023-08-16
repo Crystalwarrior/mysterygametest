@@ -16,6 +16,7 @@ size = Vector2(11.3137, 11.3137)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_beeef"]
 radius = 9.0
+height = 26.0
 
 [sub_resource type="Animation" id="Animation_t6rs8"]
 resource_name = "KnifeSwing"
@@ -144,15 +145,16 @@ scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_ej85c")
 
 [node name="HitBox" type="Area2D" parent="."]
-position = Vector2(0, -12)
+position = Vector2(0, -7)
 script = ExtResource("4_abueb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+position = Vector2(0, -4)
 shape = SubResource("CapsuleShape2D_beeef")
 debug_color = Color(0, 0.6, 0.0235294, 0.419608)
 
 [node name="DirectionPivot" type="Node2D" parent="."]
-position = Vector2(0, -12)
+position = Vector2(0, -7)
 
 [node name="SwingArea2D" type="Area2D" parent="DirectionPivot"]
 rotation = -1.5708
