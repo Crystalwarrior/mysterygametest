@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dx8dwpoo12hqs"]
+[gd_scene load_steps=17 format=3 uid="uid://dx8dwpoo12hqs"]
 
 [ext_resource type="Texture2D" uid="uid://bynbj2orepl1i" path="res://actual_person.png" id="1_mck8c"]
 [ext_resource type="Script" path="res://player.gd" id="1_udxex"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://lmwvfhl2ohjc" path="res://assets/sprites/character/head/idle.png" id="4_gd6b6"]
 [ext_resource type="Texture2D" uid="uid://ci1d3mfr2m0v7" path="res://assets/sprites/character/hair/john.png" id="5_eb4gg"]
 [ext_resource type="Script" path="res://ContainerComponent.gd" id="6_68yi5"]
+[ext_resource type="AudioStream" uid="uid://dxs1ee2tb4jy0" path="res://assets/sounds/knife/swing1.wav" id="9_g4my8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ej85c"]
 size = Vector2(11.3137, 11.3137)
@@ -57,6 +58,21 @@ tracks/2/keys = {
 "update": 1,
 "values": [true, true, false]
 }
+tracks/3/type = "audio"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AudioStreamPlayer2D")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("9_g4my8")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/3/use_blend = true
 
 [sub_resource type="Animation" id="Animation_7oqwq"]
 length = 0.001
@@ -141,7 +157,6 @@ texture = ExtResource("3_fjmmt")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -7)
 rotation = 0.785398
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_ej85c")
 
 [node name="HitBox" type="Area2D" parent="."]
@@ -154,7 +169,7 @@ shape = SubResource("CapsuleShape2D_beeef")
 debug_color = Color(0, 0.6, 0.0235294, 0.419608)
 
 [node name="DirectionPivot" type="Node2D" parent="."]
-position = Vector2(0, -7)
+position = Vector2(0, -11)
 
 [node name="SwingArea2D" type="Area2D" parent="DirectionPivot"]
 rotation = -1.5708
@@ -183,6 +198,11 @@ script = ExtResource("4_0giqf")
 
 [node name="ContainerComponent" type="Node" parent="."]
 script = ExtResource("6_68yi5")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(0, -7)
+max_distance = 700.0
+max_polyphony = 2
 
 [connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]
 [connection signal="area_exited" from="HitBox" to="." method="_on_hit_box_area_exited"]
